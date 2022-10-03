@@ -1,12 +1,12 @@
 import { Component } from "react";
 import "./App.css";
-import Maman from "./components/Maman";
+import Display from "./components/Display";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Maman></Maman>
+        <Display></Display>
       </div>
     );
   }
