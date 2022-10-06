@@ -1,49 +1,24 @@
 import { Component } from "react";
 import "./App.css";
-import Car from "./components/Car";
+import React from "react";
+import MyRef from "./components/MyRef";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log("Je suis dans le constructor");
 
-    this.state = {
-      name: "Toto",
-      step: 1,
-      display: true,
-    };
-  }
-  componentDidMount() {
-    console.log("Le composant a été monté");
-    this.setState({
-      step: 2,
-    });
+    this.refComp = React.createRef();
   }
 
-  componentWillUnmount() {
-    console.log("Le composant a été retiré");
-  }
-
-  displayOrHidden = () => {
-    this.setState({
-      display: !this.state.display,
-    });
+  handleClick = () => {
+    this.refComp.current.addFocus();
   };
 
   render() {
-    console.log("Je suis dans le render");
-    const showComponent = this.state.display ? (
-      <Car name="Toto 2"></Car>
-    ) : (
-      <div></div>
-    );
-
     return (
-      <div className="App">
-        <button onClick={this.displayOrHidden}>
-          Enlever le composant du DOM
-        </button>
-        {showComponent}
+      <div className="App" style={{ textAlign: "center" }}>
+        <MyRef ref={this.refComp}></MyRef>
+        <button onClick={this.handleClick}>Focus !</button>
       </div>
     );
   }
